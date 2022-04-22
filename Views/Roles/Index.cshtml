@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityRole>
+<h1>Roles</h1>
+
+<a asp-action="Create" asp-controller="Roles">Create Role</a>
+
+<table>
+    <tr>
+        <th>
+            Role Name
+        </th>
+        <th>
+            Actions
+        </th>
+    </tr>
+    
+    @if(Model != null) 
+{
+    foreach (var item in Model)
+    {
+        <tr>
+        <td>
+            @item.Name
+        </td>
+        <td>
+            <a class="btn btn-warning" asp-action="Manage" asp-controller="Roles" asp-route-id="@item.Id">Manager Users</a>
+            <a class="btn btn-danger" asp-action="Delete" asp-controller="Roles" asp-route-id="@item.Id">Delete</a>
+
+        </td>
+    </tr>
+    }
+}
+    
+
+    
+
+</table>

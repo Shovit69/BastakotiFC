@@ -1,0 +1,35 @@
+﻿@model ShovitBastakoti.Models.RoleMembership
+
+<h1>Manage Role of @Model.Role.Name</h1>
+
+<h2>Members</h2>
+<ul>
+    @foreach (var item in Model.Members)
+    {
+        <li>@item.UserName (Email: @item.Email)  <a asp-action="RemoveUserFromRole" 
+                                                    asp-route-roleId="@Model.Role.Id"
+                                                    asp-route-userId="@item.Id"
+                                                    asp-controller="Roles"
+                                                    class="btn btn-primary"
+                                                    >
+                                                    Add User to Role
+                                                    </a>
+                                                    </li>
+
+    }
+</ul>
+
+<h2>Non-Members</h2>
+<ul>
+    @foreach (var item in Model.NonMembers)
+    {
+        <li>@item.UserName (Email: @item.Email) <a asp-action="AddUserToRole"
+   asp-route-roleId="@Model.Role.Id"
+   asp-route-userId="@item.Id"
+   asp-controller="Roles"
+   class="btn btn-primary">
+    Add User to Role
+</a></li>
+
+    }
+</ul>
